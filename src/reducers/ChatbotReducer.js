@@ -86,7 +86,8 @@ const formatMessage = (message) => ({
   key: message.key,
   type: message.type,
   author: AUTHORS.BOT,
-  bubbles: formatBubbles(message.bubbles)
+  bubbles: formatBubbles(message.bubbles),
+  options: message.options
 })
 
 const formatBubbles = (bubbles) => {

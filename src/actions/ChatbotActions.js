@@ -50,6 +50,9 @@ export const sendMessage = (userId, terminalId, key, response, message) => (disp
         type: FETCHED_ANSWER,
         payload: { ...data, message }
       });
+    })
+    .catch(function(error) {
+      console.log(error);
     });
 }
 
