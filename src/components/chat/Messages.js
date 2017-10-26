@@ -1,42 +1,68 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, FlatList, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { GiftedChat } from 'react-native-gifted-chat';
 import PropTypes from 'prop-types';
 
-import Message from './messageTypes/Message';
+import { startChat } from '../../actions/ChatbotActions';
 
-class Messages extends Component {
+import Message from './Message';
+import UserInput from './UserInput';
+
+class Messages extends Component { 
+  componentWillMount() {
+    this.props.startChat();
+  }
+
   render() {
     const { messages } = this.props;
 
     return (
-      <View style={styles.messagesContainer}>
-        <FlatList
-          data={messages}
-          renderItem={({item}) => <Message message={item}></Message>}
-        />
-      </View>
+      <KeyboardAvoidingView behavior="padding" style={styles.chatContainer}>
+        <View style={styles.messagesContainer}>
+          <FlatList
+            data={messages}
+            renderItem={({item}) => <Message message={item}></Message>}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          { messages.length > 0 ?
+            <UserInput />
+            : null }
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }
 
 Messages.propTypes = {
-  messages: PropTypes.array
+  messages: PropTypes.array,
+  startChat: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
-  messagesContainer: {
-    flex: 1,
-    // flexDirection: 'column'
+  chatContainer: {
+    flex: 1
   },
+
+  messagesContainer: {
+    height: '80%'
+  },
+
+  inputContainer: {
+    height: '20%'
+  }
 });
 
 const mapStateToProps = (state) => ({
   messages: state.chatbot.messages
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-//   fetchLatestImages
-// });
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    startChat
+  }, dispatch);
+};
 
-export default connect(mapStateToProps, null)(Messages);
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);

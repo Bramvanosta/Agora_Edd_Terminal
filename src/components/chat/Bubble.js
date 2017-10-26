@@ -2,24 +2,23 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-class TextMessage extends Component {
+class Bubble extends Component {
   render() {
-    const { message } = this.props;
+    const { bubble } = this.props;
 
     return (
       <View>
-        <Text>{ message.content }</Text>
+        <Text>{ bubble.content }</Text>
       </View>
     )
   }
 }
 
-TextMessage.propTypes = {
-  message: PropTypes.object.isRequired
+Bubble.propTypes = {
+  bubble: PropTypes.object.isRequired
 }
 
-export default TextMessage;
+export default Bubble;
 
 const styles = StyleSheet.create({
-  
 });
