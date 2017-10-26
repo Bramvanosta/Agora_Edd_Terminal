@@ -37,6 +37,8 @@ export const sendMessage = (userId, terminalId, key, response, message) => (disp
     response_data: response
   };
 
+  console.log('sent data: ', test);
+
   axios.post(`${CONFIG.baseUrl}/api/chatBot`, {
       user_id: userId,
       terminal_id: terminalId,
@@ -50,9 +52,6 @@ export const sendMessage = (userId, terminalId, key, response, message) => (disp
         type: FETCHED_ANSWER,
         payload: { ...data, message }
       });
-    })
-    .catch(function(error) {
-      console.log(error);
     });
 }
 

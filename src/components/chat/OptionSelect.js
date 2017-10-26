@@ -4,8 +4,8 @@ import Slider from "react-native-slider";
 import PropTypes from 'prop-types';
 
 class OptionSelect extends Component {
-  handlePress = (option) => {
-    this.props.onChange(option)
+  handlePress = (optionId, message) => {
+    this.props.onChange(optionId, message)
   }
 
   render() {
@@ -13,9 +13,9 @@ class OptionSelect extends Component {
 
     return (
       <View style={styles.optionsContainer}>
-        { options.map((option, index) => (
-          <TouchableOpacity key={index} onPress={() => this.handlePress(option)}>
-            <Text>{ option }</Text>
+        { options.map((option) => (
+          <TouchableOpacity key={option.option_id} onPress={() => this.handlePress(option.option_id, option.name)}>
+            <Text>{ option.name }</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -24,7 +24,8 @@ class OptionSelect extends Component {
 }
 
 OptionSelect.propTypes = {
-  options: PropTypes.array
+  options: PropTypes.array,
+  onChange: PropTypes.func.isRequired
 }
 
 export default OptionSelect;

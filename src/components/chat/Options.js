@@ -28,11 +28,13 @@ class Options extends Component {
   render() {
     const { options } = this.props;
 
+    console.log(options);
+
     return (
       <View style={styles.optionsContainer}>
-        { options.map((option, index) => (
-          <TouchableOpacity key={index} onPress={() => this.handlePress(option)}>
-            <Text>{ option }</Text>
+        { options.map((option) => (
+          <TouchableOpacity key={option.option_id} onPress={() => this.handlePress(option.name)}>
+            <Text>{ option.name }</Text>
           </TouchableOpacity>
         ))}
       </View>
