@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import AppProvider from './src/AppProvider';
 
-AppRegistry.registerComponent('AgoraEddTerminal', () => App);
+AppRegistry.registerComponent('AgoraEddTerminal', () => AppProvider);
