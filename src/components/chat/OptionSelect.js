@@ -35,13 +35,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex:1,
     justifyContent: 'center',
-    heigth:100
+    height:100
     
   },
   optionItem:{
     padding:20,
     backgroundColor:"#ffffff",
-    margin:20
+    margin:20,
+    borderRadius:20,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 5,
+    shadowOpacity: 1.0
+
   },
   optionItemText:{
     color:"#006ce2",
