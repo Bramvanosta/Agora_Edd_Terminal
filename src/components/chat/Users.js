@@ -40,7 +40,7 @@ class Users extends Component {
               { user.skills.map((skill, index) => (
                   <Text>{ skill.name }</Text>  
               ))}
-          </View>
+           </View>
           </TouchableOpacity>
         
         ))}
@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
   },
   userCard:{
     // marginTop: -120,
-    padding: 20,
+    // padding: 20,
+    flex:1,
     borderRadius:35,
     backgroundColor:"#ffffff",
     margin: 10,
