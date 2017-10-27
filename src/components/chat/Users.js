@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     flex:1,
-    flexWrap: nowrap
+    flexWrap: 'nowrap'
   },
   userNameCard:{
     color:"#0067e0",
