@@ -60,17 +60,20 @@ const styles = StyleSheet.create({
   usersContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    flex:1
   },
   userNameCard:{
     color:"#0067e0",
     fontSize:20,
+    padding:10
   },
   userCard:{
     // marginTop: -120,
     padding: 10,
+    flex:1,
     // alignSelf: 'stretch',
     borderRadius:35,
-    backgroundColor:"#cccccc",
+    backgroundColor:"#fffffff",
     // margin: 10,
     shadowColor: '#000000',
     shadowOffset: {
