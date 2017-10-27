@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
 
   optionItem:{
-    marginTop: -100,
+    marginTop: -80,
     padding:20,
     backgroundColor:"#ffffff",
     margin:20,

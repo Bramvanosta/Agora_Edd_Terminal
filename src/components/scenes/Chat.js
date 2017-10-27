@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import * as TYPES from '../../config/messageTypes';
+
 import { quitSession } from '../../actions/ChatbotActions';
 
 import Messages from '../chat/Messages';
@@ -16,6 +18,12 @@ class Chat extends Component {
   }
 
   render() {
+    if (this.props.currentMessage && this.props.currentMessage.type === TYPES.END) {
+      setTimeout(() => {
+        this.handlePress();
+      }, 10000);
+    }
+
     return (
       <View style={styles.main}>
         <StatusBar
@@ -42,8 +50,13 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  currentMessage: PropTypes.object
 }
+
+const mapStateToProps = (state) => ({
+  currentMessage: state.chatbot.currentMessage
+});
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -51,7 +64,7 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(Chat);
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);
 
 const styles = StyleSheet.create({
   main: {
@@ -86,7 +99,6 @@ const styles = StyleSheet.create({
   container: {
     height: 620,
     flexDirection: 'row',
-    paddingTop: 30,
     paddingLeft: 40,
     paddingRight: 40
   }

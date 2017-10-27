@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
 
@@ -17,17 +17,22 @@ class Message extends Component {
 
     return (
       <View style={styleMessage}>
-        { message.bubbles.map((bubble, index) => {
-            const lastBubbleStyle = index === message.bubbles.length - 1 ? message.author === AUTHORS.BOT ? styles.lastBubbleBot : styles.lastBubbleUser : null;
-            const betweenBubblesStyle = index > 0 ? styles.betweenBubbles : null;
-          
-            return (
-              <Animatable.View animation="zoomIn" duration={500} key={bubble.id} style={[styles.bubble, styleBubble, lastBubbleStyle, betweenBubblesStyle]}>
-                <Bubble bubble={bubble} white={message.author === AUTHORS.USER}></Bubble>
-              </Animatable.View>
-            );
-          }) 
-        }
+        { message.author === AUTHORS.BOT ?
+          <Image style={styles.image} source={require('../../assets/img/avatar.png')}></Image>
+          : null }
+        <View style={styles.bubbleContainer}>
+          { message.bubbles.map((bubble, index) => {
+              const lastBubbleStyle = index === message.bubbles.length - 1 ? message.author === AUTHORS.BOT ? styles.lastBubbleBot : styles.lastBubbleUser : null;
+              const betweenBubblesStyle = index > 0 ? styles.betweenBubbles : null;
+
+              return (
+                <Animatable.View animation="zoomIn" duration={500} key={bubble.id} style={[styles.bubble, styleBubble, lastBubbleStyle, betweenBubblesStyle]}>
+                  <Bubble bubble={bubble} white={message.author === AUTHORS.USER}></Bubble>
+                </Animatable.View>
+              );
+            }) 
+          }
+        </View>
       </View>
     )
   }
@@ -41,11 +46,20 @@ export default Message;
 
 const styles = StyleSheet.create({
   messageBot: {
+    flexDirection: 'row',
     alignSelf: 'flex-start'
   },
   
   messageUser: {
     alignSelf: 'flex-end'
+  },
+
+  avatarContainer: {
+    flexDirection: 'row'
+  },
+
+  bubbleContainer: {
+    maxWidth: '75%'
   },
 
   bubble: {
@@ -54,8 +68,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     paddingHorizontal: 12,
     paddingVertical: 20,
-    maxWidth: '50%',
     borderRadius: 35
+  },
+
+  image: {
+    alignSelf: 'flex-end',
+    width: 85,
+    height: 85
   },
 
   lastBubbleBot: {
