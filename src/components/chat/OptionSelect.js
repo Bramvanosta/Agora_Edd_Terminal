@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   optionItem:{
     color:"#006ce2",
     padding:20,
-    fontWeight: 500
+    fontWeight: "500"
   }
 
 });
