@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   userNameCard:{
     color:"#0067e0",
     fontSize:20,
-    padding:10
   },
   userCard:{
     // marginTop: -120,
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
     flex:1,
     // alignSelf: 'stretch',
     borderRadius:35,
-    backgroundColor:"#fffffff",
+    backgroundColor:"#cccccc",
     // margin: 10,
     shadowColor: '#000000',
     shadowOffset: {
