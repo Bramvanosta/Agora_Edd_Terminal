@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
   },
 
   messagesContainer: {
-    height: '80%'
+    height: '70%'
   },
 
   inputContainer: {
-    height: '20%'
+    height: '30%'
   }
 });
 
