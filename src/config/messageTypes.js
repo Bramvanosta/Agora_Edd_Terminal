@@ -5,3 +5,4 @@ export const PICTURE = 'PICTURE';
 export const SEARCH = 'SEARCH';
 export const USER = 'SELECT_USER';
 export const END = 'END';
+export const LOADING = 'LOADING';

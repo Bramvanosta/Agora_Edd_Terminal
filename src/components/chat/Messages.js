@@ -15,11 +15,9 @@ class Messages extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.messages.length !== nextProps.messages.length) {
       setTimeout(() => {
         this.messagesList.scrollToEnd();
-      }, 300);
-    }
+      }, 400);
   }
 
   render() {

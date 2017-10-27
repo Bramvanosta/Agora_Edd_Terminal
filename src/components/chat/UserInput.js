@@ -42,9 +42,9 @@ class messageInput extends Component {
     
     switch(currentMessage.type) {
       case TYPES.TEXT:
-        return <TextInput style={styles.textInput} onChangeText={(text) => this.handleChange(text)} />
+        return <TextInput style={styles.textInput} placeholder="Placeholder" onChangeText={(text) => this.handleChange(text)} />
       case TYPES.PROGRESS:
-        return <Progress step={20} onChange={(response, message) => this.handleChange(response, message)} />;
+        return <Progress step={30} onChange={(response, message) => this.handleChange(response, message)} />;
       case TYPES.SELECT:
         return <OptionSelect options={currentMessage.options} onChange={(option, message) => this.handleChange(option, message)}></OptionSelect>
       case TYPES.PICTURE:
@@ -57,12 +57,15 @@ class messageInput extends Component {
   }
   
   render() {
-    const { response, currentMessage } = this.props;
-    const buttonIsVisible = currentMessage.type === TYPES.TEXT || currentMessage.type === TYPES.PROGRESS;
+    const { response, currentMessage, loading } = this.props;
+    const buttonIsVisible = (currentMessage.type === TYPES.TEXT || currentMessage.type === TYPES.PROGRESS) && !loading;
+    const inputIsVisible = !loading;
 
     return (
       <View style={styles.inputContainer}>
-        { this.renderInput() }
+        { inputIsVisible ?
+          this.renderInput()
+          : null }
         { buttonIsVisible ?
           <TouchableOpacity
             style={styles.validButton}
@@ -78,6 +81,7 @@ class messageInput extends Component {
 messageInput.propTypes = {
   response: PropTypes.any,
   message: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
   currentMessage: PropTypes.object,
   userId: PropTypes.number,
   terminalId: PropTypes.number
@@ -86,6 +90,7 @@ messageInput.propTypes = {
 const mapStateToProps = (state) => ({
   response: state.chatbot.response,
   message: state.chatbot.message,
+  loading: state.chatbot.loading,
   currentMessage: state.chatbot.currentMessage,
   userId: state.user.id,
   terminalId: state.terminal.id

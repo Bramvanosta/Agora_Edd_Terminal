@@ -28,7 +28,7 @@ class Search extends Component {
           ))}
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.textInput} onChangeText={(text) => this.handleChange(text)} />
+          <TextInput style={styles.textInput} placeholder="Vos compétences" onChangeText={(text) => this.handleChange(text)} />
         </View>
       </View>
     )
@@ -57,15 +57,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(Search);
 const styles = StyleSheet.create({
   searchContainer: {
     flex: 1,
-    // justifyContent: 'space-between'
   },
 
   optionsContainer: {
     flexDirection: 'row',
-  },
-
-  inputContainer: {
-    // flex: 1
   },
 
   optionItem:{

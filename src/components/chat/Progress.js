@@ -17,7 +17,7 @@ class Progress extends Component {
     
     const hours = Math.floor(value / 60);
     const minutes = value % 60;
-    this.props.onChange(value, `${hours} heures ${minutes > 0 ? 'et ' + minutes + ' minutes' : null}`)
+    this.props.onChange(value, `${hours} heures ${minutes > 0 ? 'et ' + minutes + ' minutes' : ''}`)
   }
 
   render() {
@@ -26,28 +26,29 @@ class Progress extends Component {
 
     const minHours = Math.floor(min / 60);
     const minMinutes = min % 60;
+    const currentHours = Math.floor(value / 60);
+    const currentMinutes = value % 60;
     const maxHours = Math.floor(max / 60);
     const maxMinutes = max % 60;
     
     return (
       <View style={styles.progressContainer}>
-        {/* <View style={styles.textContainer}>
+        <View style={styles.textContainer}>
           <Text style={styles.label}>{ minHours > 0 ? `${minHours}h` : null }{ minMinutes > 0 ? `${minMinutes}min` : null}</Text>
+          <Text style={styles.label}>{ currentHours > 0 ? `${currentHours}h` : null }{ currentMinutes > 0 ? `${currentMinutes}min` : null}</Text>
           <Text style={styles.label}>{ maxHours > 0 ? `${maxHours}h` : null }{ maxMinutes > 0 ? `${maxMinutes}min` : null}</Text>
-        </View> */}
-        {/* <View style={styles.sliderContainer}> */}
-          <Slider
-            style={styles.slider}
-            value={value}
-            onValueChange={value => this.handleChange(value)}
-            step={step}
-            minimumValue={min}
-            maximumValue={max}
-            trackStyle={styles.track}
-            thumbStyle={styles.thumb}
-            minimumTrackTintColor="#ff4d64"
-          />
-        {/* </View> */}
+        </View>
+        <Slider
+          style={styles.slider}
+          value={value}
+          onValueChange={value => this.handleChange(value)}
+          step={step}
+          minimumValue={min}
+          maximumValue={max}
+          trackStyle={styles.track}
+          thumbStyle={styles.thumb}
+          minimumTrackTintColor="#ff4d64"
+        />
       </View>
     )
   }
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
 
   textContainer: {
     flex: 1,
+    marginTop: -90,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },

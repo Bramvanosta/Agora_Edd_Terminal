@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
+import { Bubbles } from 'react-native-loader';
 
 import * as AUTHORS from '../../config/authorTypes';
+import * as TYPES from '../../config/messageTypes'
 
 import Bubble from './Bubble';
 
@@ -21,7 +23,11 @@ class Message extends Component {
           <Image style={styles.image} source={require('../../assets/img/avatar.png')}></Image>
           : null }
         <View style={styles.bubbleContainer}>
-          { message.bubbles.map((bubble, index) => {
+          { message.type === TYPES.LOADING ?
+            <Animatable.View animation="zoomIn" duration={500} style={[styles.bubble, styleBubble, styles.lastBubbleBot]}>
+              <Bubbles size={8} color="#e1e1e1"></Bubbles>
+            </Animatable.View>
+            : message.bubbles.map((bubble, index) => {
               const lastBubbleStyle = index === message.bubbles.length - 1 ? message.author === AUTHORS.BOT ? styles.lastBubbleBot : styles.lastBubbleUser : null;
               const betweenBubblesStyle = index > 0 ? styles.betweenBubbles : null;
 
@@ -55,7 +61,8 @@ const styles = StyleSheet.create({
   },
 
   avatarContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginRight: 24
   },
 
   bubbleContainer: {

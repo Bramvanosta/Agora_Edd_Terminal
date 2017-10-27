@@ -16,6 +16,7 @@ const initialState = {
   loading: false,
   response: '',
   message: '',
+  currentMessage: {},
   currentQuestion: null,
   messages: [],
   autocompleteLoading: false,
@@ -23,21 +24,31 @@ const initialState = {
 }
 
 export default function chatbotState(state = initialState, action) {
+  let messagesWithoutLoading = [];
+
   switch(action.type) {
     case REQUEST_CHAT:
       return {
         ...state,
         loading: true,
-        messages: []
+        messages: [
+          {
+            key: 'loading',
+            type: TYPES.LOADING,
+            author: AUTHORS.BOT,
+            bubbles: []
+          }
+        ]
       };
 
     case FETCHED_CHAT:
+      messagesWithoutLoading = state.messages.filter(message => message.type !== TYPES.LOADING);
       return {
         ...state,
         loading: false,
         currentMessage: formatMessage(action.payload),
         messages: [
-          ...state.messages,
+          ...messagesWithoutLoading,
           formatMessage(action.payload)
         ]
       };
@@ -65,11 +76,19 @@ export default function chatbotState(state = initialState, action) {
                 content: action.payload.message
               }
             ]
+          },
+          {
+            key: 'loading',
+            type: TYPES.LOADING,
+            author: AUTHORS.BOT,
+            bubbles: []
           }
         ]
       }
 
     case FETCHED_ANSWER:
+      messagesWithoutLoading = state.messages.filter(message => message.type !== TYPES.LOADING);
+
       return {
         ...state,
         loading: false,
@@ -77,7 +96,7 @@ export default function chatbotState(state = initialState, action) {
         message: '',
         currentMessage: formatMessage(action.payload),
         messages: [
-          ...state.messages,
+          ...messagesWithoutLoading,
           formatMessage(action.payload)
         ]
       }

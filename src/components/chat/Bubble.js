@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 class Bubble extends Component {
@@ -8,7 +8,11 @@ class Bubble extends Component {
 
     return (
       <View>
-        <Text style={[styles.text, white ? styles.whiteText : null]}>{ bubble.content }</Text>
+        { bubble.content.length > 0 ?
+          <Text style={[styles.text, white ? styles.whiteText : null]}>{ bubble.content }</Text>
+          : bubble.url_avatar ? 
+            <Image style={styles.image} source={{uri: bubble.url_avatar}} />
+            : null }
       </View>
     )
   }
@@ -26,6 +30,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 25,
     color: '#4a4a4a'
+  },
+
+  image: {
+    width: 180,
+    height: 180
   },
 
   whiteText: {

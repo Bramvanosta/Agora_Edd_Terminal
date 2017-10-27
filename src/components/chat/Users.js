@@ -37,10 +37,10 @@ class Users extends Component {
           <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
             <ScrollView style={styles.scroll}>
               <View>
-                <Text style={styles.userNameCard} >{ user.username } { user.id }</Text>
+                <Text style={styles.userNameCard} >{ user.username }</Text>
               </View>
-              { user.skills.map((skill) => (
-                <View key={skill.id}>
+              { user.skills.map((skill, index) => (
+                <View key={index}>
                   <Text>{ skill.name }</Text>  
                 </View>
               ))}
@@ -72,10 +72,10 @@ const styles = StyleSheet.create({
   },
   userCard:{
     marginTop: -120,
-    padding:30,
+    padding: 20,
     borderRadius:35,
     backgroundColor:"#ffffff",
-    margin:10,
+    margin: 10,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
