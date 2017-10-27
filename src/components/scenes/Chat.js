@@ -21,7 +21,7 @@ class Chat extends Component {
     if (this.props.currentMessage && this.props.currentMessage.type === TYPES.END) {
       setTimeout(() => {
         this.handlePress();
-      }, 10000);
+      }, 20000);
     }
 
     return (

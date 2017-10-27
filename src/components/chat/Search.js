@@ -8,7 +8,7 @@ import { fetchAutocomplete } from '../../actions/ChatbotActions';
 
 class Search extends Component {
   handlePress = (id, name) => {
-    this.props.onChange(id, `J'aimerai recevoir l'aide d'un edder sur ${name}`)
+    this.props.onChange(id, `J'aimerais recevoir l'aide d'un Edder sur ${name}`)
   }
 
   handleChange = (text) => {
