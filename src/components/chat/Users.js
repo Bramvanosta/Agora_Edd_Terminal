@@ -35,7 +35,7 @@ class Users extends Component {
         { users.map((user) => (
          <View key={user.id} style={styles.userCard}>
           <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
-            <ScrollView style={styles.scroll}>
+            <ScrollView>
               <View>
                 <Text style={styles.userNameCard} >{ user.username }</Text>
               </View>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize:20,
   },
   userCard:{
-    marginTop: -120,
+    // marginTop: -120,
     padding: 20,
     borderRadius:35,
     backgroundColor:"#ffffff",
@@ -85,7 +85,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1
   },
   
-  scroll: {
-    height: 150,
-  }
+
 });
