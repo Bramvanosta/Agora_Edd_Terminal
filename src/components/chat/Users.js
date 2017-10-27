@@ -60,12 +60,13 @@ const styles = StyleSheet.create({
   usersContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    flex:1
+    flex:1,
+    flexWrap: nowrap
   },
   userNameCard:{
     color:"#0067e0",
     fontSize:20,
-    flex:1
+    flex:'none'
   },
   userCard:{
     // marginTop: -120,
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1
   },
   skillName:{
-    flex:1
+    flex:'none'
   }
   
 
