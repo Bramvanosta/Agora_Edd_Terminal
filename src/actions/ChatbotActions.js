@@ -75,9 +75,9 @@ export const fetchAutocomplete = (value, uri, searchTerm) => (dispatch) => {
   .then(response => response.data)
   .then(data => {
     console.log(data);
-    // dispatch({
-    //   type: FETCHED_ANSWER,
-    //   payload: { ...data, message }
-    // });
+    dispatch({
+      type: FETCHED_AUTOCOMPLETE,
+      payload: data
+    });
   });
 }
