@@ -34,17 +34,11 @@ class Users extends Component {
       <View style={styles.usersContainer}>
         { users.map((user) => (
          <View key={user.id} style={styles.userCard}>
-          <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
-            <ScrollView style={styles.scroll}>
-              <View>
-                <Text style={styles.userNameCard} >{ user.username }</Text>
-              </View>
+          <TouchableOpacity style={styles.test} onPress={() => this.handlePress(user.option_id, user.username)}>
+              <Text style={styles.userNameCard} >{ user.username }</Text>
               { user.skills.map((skill, index) => (
-                <View key={index}>
-                  <Text>{ skill.name }</Text>  
-                </View>
+                <Text key={index}>{ skill.name }</Text>
               ))}
-            </ScrollView>
           </TouchableOpacity>
         </View>
         ))}
@@ -62,17 +56,22 @@ export default Users;
 
 const styles = StyleSheet.create({
   usersContainer: {
+    flex: 1,
     flexDirection: 'row',
-    flex:1,
     justifyContent: 'center',
   },
+
   userNameCard:{
     color:"#0067e0",
     fontSize:20,
   },
+
   userCard:{
-    marginTop: -120,
-    padding: 20,
+    marginTop: -10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
     borderRadius:35,
     backgroundColor:"#ffffff",
     margin: 10,
@@ -81,11 +80,16 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1
     },
+    minHeight: 80,
     shadowRadius: 5,
     shadowOpacity: 0.1
   },
   
   scroll: {
-    height: 150,
+    // height: 150,
+  },
+
+  test: {
+    flex: 1
   }
 });
