@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -35,6 +35,7 @@ class Users extends Component {
         { users.map((user) => (
          <View key={user.id} style={styles.userCard}>
           <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
+            <ScrollView style={styles.scroll}>
               <View>
                 <Text style={styles.userNameCard} >{ user.username } { user.id }</Text>
               </View>
@@ -43,8 +44,9 @@ class Users extends Component {
                   <Text>{ skill.name }</Text>  
                 </View>
               ))}
-            </TouchableOpacity>
-          </View>
+            </ScrollView>
+          </TouchableOpacity>
+        </View>
         ))}
       </View>
     )
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize:20,
   },
   userCard:{
-    height: 150,
+    marginTop: -120,
     padding:30,
     borderRadius:35,
     backgroundColor:"#ffffff",
@@ -81,9 +83,9 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.1
-  }
+  },
   
-
-
-
+  scroll: {
+    height: 150,
+  }
 });
