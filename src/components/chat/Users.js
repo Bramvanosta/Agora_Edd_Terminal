@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   //   padding:20,
   //   borderRadius:35
   // },
-  usersSkills = function(isMajor) {
+  usersSkills : function(isMajor) {
    style = {
     background:'#b6b6b6',
     color:'#ffffff',
