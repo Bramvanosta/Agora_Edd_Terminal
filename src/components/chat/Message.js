@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import * as Animatable from 'react-native-animatable';
 
 import * as AUTHORS from '../../config/authorTypes';
 
@@ -21,9 +22,9 @@ class Message extends Component {
             const betweenBubblesStyle = index > 0 ? styles.betweenBubbles : null;
           
             return (
-              <View key={bubble.id} style={[styles.bubble, styleBubble, lastBubbleStyle, betweenBubblesStyle]}>
+              <Animatable.View animation="zoomIn" duration={500} key={bubble.id} style={[styles.bubble, styleBubble, lastBubbleStyle, betweenBubblesStyle]}>
                 <Bubble bubble={bubble} white={message.author === AUTHORS.USER}></Bubble>
-              </View>
+              </Animatable.View>
             );
           }) 
         }
