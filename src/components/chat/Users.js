@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { fetchAutocomplete } from '../../actions/ChatbotActions';
 
 class Users extends Component {
+  
   handlePress = (id, name) => {
     this.props.onChange(id, name)
   }
@@ -18,9 +19,9 @@ class Users extends Component {
       <View style={styles.usersContainer}>
         { users.map((user) => (
           <TouchableOpacity key={user.id} onPress={() => this.handlePress(user.option_id, user.username)}>
-            <Text>{ user.username }</Text>
+            <Text style={styles.userNameCard} >{ user.username }</Text>
             { user.skills.map((skill) => (
-              <Text key={skill.id}>{ skill.name }</Text>  
+              <Text style={styles.usersSkills(skill.isSearched)}  key={skill.id}>{ skill.name }</Text>  
             ))}
           </TouchableOpacity>
         ))}
@@ -40,4 +41,26 @@ const styles = StyleSheet.create({
   usersContainer: {
     flex: 1
   },
+  userNameCard:{
+    color:"#0c73e3",
+    fontWeight: "700"
+  },
+  // usersSkills:{
+  //   background:'#b6b6b6',
+  //   color:'#ffffff',
+  //   padding:20,
+  //   borderRadius:35
+  // },
+  usersSkills = function(isMajor) {
+   style = {
+    background:'#b6b6b6',
+    color:'#ffffff',
+    padding:20,
+    borderRadius:35
+   };
+   if(isMajor){
+     style.background = '#00d4aa';
+   }
+   return style;
+ }
 });
