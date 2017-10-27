@@ -17,7 +17,7 @@ class Chat extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.main}>
         <StatusBar
           barStyle="light-content"
         />
@@ -54,6 +54,10 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(null, mapDispatchToProps)(Chat);
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1
+  },
+
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -66,6 +70,7 @@ const styles = StyleSheet.create({
 
   emptySpace: {
     flex: 1,
+    alignSelf: 'stretch'
   },
 
   titleContainer: {
@@ -79,6 +84,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
+    height: 620,
     flexDirection: 'row',
     paddingTop: 30,
     paddingLeft: 40,
