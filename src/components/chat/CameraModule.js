@@ -9,9 +9,11 @@ class CameraModule extends Component {
   }
 
   takePicture = () => {
-    this.camera.capture()
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
+    this.handlePress();
+    // this.camera.capture()
+    //   .then((data) => console.log(data))
+    //   .catch(err => console.error(err));
+    
   }
 
   render() {
