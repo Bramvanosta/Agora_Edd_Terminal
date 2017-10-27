@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   userCard:{
     // marginTop: -120,
-    // padding: 20,
+    padding: 10,
     flex:1,
     alignSelf: 'stretch',
     borderRadius:35,
