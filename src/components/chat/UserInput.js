@@ -42,7 +42,7 @@ class messageInput extends Component {
     
     switch(currentMessage.type) {
       case TYPES.TEXT:
-        return <TextInput style={styles.textInput} placeholder="Placeholder" onChangeText={(text) => this.handleChange(text)} />
+        return <TextInput style={styles.textInput} placeholder="Placeholder" onChangeText={(text) => this.handleChange(text, `Salut Edd, je m'appelle ${text}`)} />
       case TYPES.PROGRESS:
         return <Progress step={30} onChange={(response, message) => this.handleChange(response, message)} />;
       case TYPES.SELECT:

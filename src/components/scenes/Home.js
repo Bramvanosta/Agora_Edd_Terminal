@@ -9,7 +9,7 @@ class Home extends Component {
         <StatusBar
           barStyle="dark-content"
         />
-        <Image style={styles.image} source={require('../../assets/img/home.jpg')} />
+        <Image style={styles.image} source={require('../../assets/img/home.gif')} />
       </TouchableOpacity>
     );
   }

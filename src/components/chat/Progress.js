@@ -17,7 +17,7 @@ class Progress extends Component {
     
     const hours = Math.floor(value / 60);
     const minutes = value % 60;
-    this.props.onChange(value, `${hours} heures ${minutes > 0 ? 'et ' + minutes + ' minutes' : ''}`)
+    this.props.onChange(value, `Je pense rester ${hours} heures ${minutes > 0 ? 'et ' + minutes + ' minutes' : ''}`)
   }
 
   render() {
