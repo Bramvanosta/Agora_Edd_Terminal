@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { TouchableOpacity, StatusBar, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 class Home extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Home</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate('Chat')}
-          title="Start"
+      <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat')}>
+        <StatusBar
+          barStyle="dark-content"
         />
-      </View>
+        <Image style={styles.image} source={require('../../assets/img/home.jpg')} />
+      </TouchableOpacity>
     );
   }
 }
 
-Home.propTypes = {}
+Home.propTypes = {
+  navigation: PropTypes.object.isRequired
+}
 
 export default Home;
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 20
+  image: {
+    height: '100%',
+    width: '100%'
   }
 });

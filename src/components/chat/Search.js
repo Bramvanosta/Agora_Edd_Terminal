@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 import { fetchAutocomplete } from '../../actions/ChatbotActions';
 
-class OptionSelect extends Component {
-  handlePress = (optionId, message) => {
-    this.props.onChange(optionId, message)
+class Search extends Component {
+  handlePress = (id, name) => {
+    this.props.onChange(id, name)
   }
 
   handleChange = (text) => {
@@ -16,20 +16,33 @@ class OptionSelect extends Component {
   }
 
   render() {
-    const { options } = this.props;
+    const { autocompleteResults } = this.props;
 
     return (
       <View style={styles.searchContainer}>
+        <View style={styles.optionsContainer}>
+          { autocompleteResults.map((result) => (
+            <TouchableOpacity key={result.id} onPress={() => this.handlePress(result.id, result.name)}>
+              <Text>{ result.name }</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
         <TextInput style={styles.textInput} onChangeText={(text) => this.handleChange(text)} />
       </View>
     )
   }
 }
 
-OptionSelect.propTypes = {
+Search.propTypes = {
   onChange: PropTypes.func.isRequired,
-  currentMessage: PropTypes.object
+  currentMessage: PropTypes.object,
+  autocompleteResults: PropTypes.array
 }
+
+const mapStateToProps = (state) => ({
+  currentMessage: state.chatbot.currentMessage,
+  autocompleteResults: state.chatbot.autocompleteResults
+});
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -37,15 +50,18 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(OptionSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 const styles = StyleSheet.create({
+  searchContainer: {
+    flex: 1
+  },
+
   optionsContainer: {
     flexDirection: 'row'
   },
 
   textInput: {
-    flex: 1,
     height: 65,
     borderRadius: 35,
     padding: 20,

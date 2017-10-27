@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, FlatList, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { GiftedChat } from 'react-native-gifted-chat';
 import PropTypes from 'prop-types';
 
 import { startChat } from '../../actions/ChatbotActions';
@@ -17,7 +16,6 @@ class Messages extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.messages.length !== nextProps.messages.length) {
-      console.log('scrollToEnd');
       this.messagesList.scrollToEnd();
     }
   }

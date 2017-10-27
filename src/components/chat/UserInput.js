@@ -13,13 +13,17 @@ import Progress from './Progress';
 import OptionSelect from './OptionSelect';
 import CameraModule from './CameraModule';
 import Search from './Search';
+import Users from './Users';
 
 class messageInput extends Component {
   handleChange = (response, message) => {
     const formattedMessage = message ? message : response
     this.props.setResponse(response, formattedMessage);
 
-    if (this.props.currentMessage.type === TYPES.SELECT || this.props.currentMessage.type === TYPES.PICTURE) {
+    if (this.props.currentMessage.type === TYPES.SELECT ||
+        this.props.currentMessage.type === TYPES.PICTURE || 
+        this.props.currentMessage.type === TYPES.SEARCH ||
+        this.props.currentMessage.type === TYPES.USER) {
       const { userId, terminalId, currentMessage } = this.props;
       this.props.sendMessage(userId, terminalId, currentMessage.key, response, formattedMessage);
     }
@@ -45,8 +49,10 @@ class messageInput extends Component {
         return <OptionSelect options={currentMessage.options} onChange={(option, message) => this.handleChange(option, message)}></OptionSelect>
       case TYPES.PICTURE:
         return <CameraModule onChange={(picture) => this.handleChange(picture)}></CameraModule>
-      case TYPES.SEACRH:
-        return <Search currentMessage={currentMessage} onChange={(options) => this.handleChange(options, message)}></Search>
+      case TYPES.SEARCH:
+        return <Search onChange={(options, message) => this.handleChange(options, message)}></Search>
+      case TYPES.USER:
+        return <Users users={currentMessage.options} onChange={(options, message) => this.handleChange(options, message)}></Users>
     }
   }
   

@@ -6,7 +6,10 @@ import {
   FETCHED_CHAT, 
   SET_RESPONSE,
   REQUEST_ANSWER,
-  FETCHED_ANSWER
+  FETCHED_ANSWER,
+  REQUEST_AUTOCOMPLETE,
+  FETCHED_AUTOCOMPLETE,
+  QUIT_SESSION
 } from '../actions/ChatbotActions';
 
 const initialState = {
@@ -14,7 +17,9 @@ const initialState = {
   response: '',
   message: '',
   currentQuestion: null,
-  messages: []
+  messages: [],
+  autocompleteLoading: false,
+  autocompleteResults: []
 }
 
 export default function chatbotState(state = initialState, action) {
@@ -76,6 +81,22 @@ export default function chatbotState(state = initialState, action) {
           formatMessage(action.payload)
         ]
       }
+
+    case REQUEST_AUTOCOMPLETE:
+      return {
+        ...state,
+        autocompleteLoading: true
+      }
+
+    case FETCHED_AUTOCOMPLETE:
+      return {
+        ...state,
+        autocompleteLoading: false,
+        autocompleteResults: action.payload
+      }
+
+    case QUIT_SESSION:
+      return initialState;
 
     default:
       return state;
