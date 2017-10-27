@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex:1,
     justifyContent: 'center',
-    height:100
-    
+    height: 100  
   },
+
   optionItem:{
     padding:20,
     backgroundColor:"#ffffff",
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.1
-
   },
+
   optionItemText:{
     color:"#006ce2",
     fontWeight: "500"

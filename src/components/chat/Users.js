@@ -33,15 +33,15 @@ class Users extends Component {
     return (
       <View style={styles.usersContainer}>
         { users.map((user) => (
-         <View style={styles.userCard}>
-          <TouchableOpacity key={user.id} onPress={() => this.handlePress(user.option_id, user.username)}>
+         <View key={user.id} style={styles.userCard}>
+          <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
               <View>
                 <Text style={styles.userNameCard} >{ user.username } { user.id }</Text>
               </View>
               { user.skills.map((skill) => (
-              <View>
-                <Text key={skill.id}>{ skill.name } { skill.id }</Text>  
-              </View>
+                <View key={skill.id}>
+                  <Text>{ skill.name }</Text>  
+                </View>
               ))}
             </TouchableOpacity>
           </View>
@@ -66,9 +66,10 @@ const styles = StyleSheet.create({
   },
   userNameCard:{
     color:"#0067e0",
-    fontSize:20
+    fontSize:20,
   },
   userCard:{
+    height: 150,
     padding:30,
     borderRadius:35,
     backgroundColor:"#ffffff",

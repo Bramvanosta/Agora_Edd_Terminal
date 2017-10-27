@@ -22,12 +22,14 @@ class Search extends Component {
       <View style={styles.searchContainer}>
         <View style={styles.optionsContainer}>
           { autocompleteResults.map((result) => (
-            <TouchableOpacity key={result.id} onPress={() => this.handlePress(result.id, result.name)}>
+            <TouchableOpacity key={result.id} onPress={() => this.handlePress(result.id, result.name)} style={styles.optionItem}>
               <Text>{ result.name }</Text>
             </TouchableOpacity>
           ))}
         </View>
-        <TextInput style={styles.textInput} onChangeText={(text) => this.handleChange(text)} />
+        <View style={styles.inputContainer}>
+          <TextInput style={styles.textInput} onChangeText={(text) => this.handleChange(text)} />
+        </View>
       </View>
     )
   }
@@ -54,11 +56,32 @@ export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 const styles = StyleSheet.create({
   searchContainer: {
-    flex: 1
+    flex: 1,
+    // justifyContent: 'space-between'
   },
 
   optionsContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+  },
+
+  inputContainer: {
+    // flex: 1
+  },
+
+  optionItem:{
+    marginTop: -100,
+    padding:20,
+    backgroundColor:"#ffffff",
+    margin:20,
+    height: 60,
+    borderRadius:35,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowRadius: 5,
+    shadowOpacity: 0.1
   },
 
   textInput: {
