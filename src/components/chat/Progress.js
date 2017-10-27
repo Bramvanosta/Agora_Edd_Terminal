@@ -8,7 +8,7 @@ class Progress extends Component {
     super();
 
     this.state = {
-      value: 0
+      value: 60
     }
   }
 
@@ -24,25 +24,36 @@ class Progress extends Component {
     const { min, max, step } = this.props;
     const { value } = this.state;
 
+    const minHours = Math.floor(min / 60);
+    const minMinutes = min % 60;
+    const maxHours = Math.floor(max / 60);
+    const maxMinutes = max % 60;
+    
     return (
-      <View>
-        <Text>{value}</Text>
-        <Slider
-          value={value}
-          onValueChange={value => this.handleChange(value)}
-          step={step}
-          minimumValue={min}
-          maximumValue={max}
-          trackStyle={styles.track}
-          thumbStyle={styles.thumb}
-        />
+      <View style={styles.progressContainer}>
+        {/* <View style={styles.textContainer}>
+          <Text style={styles.label}>{ minHours > 0 ? `${minHours}h` : null }{ minMinutes > 0 ? `${minMinutes}min` : null}</Text>
+          <Text style={styles.label}>{ maxHours > 0 ? `${maxHours}h` : null }{ maxMinutes > 0 ? `${maxMinutes}min` : null}</Text>
+        </View> */}
+        {/* <View style={styles.sliderContainer}> */}
+          <Slider
+            value={value}
+            onValueChange={value => this.handleChange(value)}
+            step={step}
+            minimumValue={min}
+            maximumValue={max}
+            trackStyle={styles.track}
+            thumbStyle={styles.thumb}
+            minimumTrackTintColor="#ff4d64"
+          />
+        {/* </View> */}
       </View>
     )
   }
 }
 
 Progress.defaultProps = {
-  min: 0,
+  min: 30,
   max: 600,
   step: 1
 }
@@ -57,17 +68,31 @@ Progress.propTypes = {
 export default Progress;
 
 const styles = StyleSheet.create({
+  progressContainer: {
+    flex: 1
+  },
+
+  textContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+
+  label: {
+    fontSize: 18,
+    color: '#9b9b9b'
+  },
+
   track: {
-    height: 1,
-    backgroundColor: '#303030',
+    height: 65,
+    borderRadius: 35,
+    backgroundColor: '#ffffff'
   },
 
   thumb: {
-    width: 30,
-    height: 30,
-    backgroundColor: 'rgba(150, 150, 150, 0.3)',
-    borderColor: 'rgba(150, 150, 150, 0.6)',
-    borderWidth: 14,
-    borderRadius: 15,
+    width: 65,
+    height: 65,
+    borderRadius: 65,
+    backgroundColor: '#1374e3',
   }
 });

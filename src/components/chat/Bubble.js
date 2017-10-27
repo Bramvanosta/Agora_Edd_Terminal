@@ -8,7 +8,7 @@ class Bubble extends Component {
 
     return (
       <View>
-        <Text style={white ? styles.whiteText : null}>{ bubble.content }</Text>
+        <Text style={[styles.text, white ? styles.whiteText : null]}>{ bubble.content }</Text>
       </View>
     )
   }
@@ -22,6 +22,12 @@ Bubble.propTypes = {
 export default Bubble;
 
 const styles = StyleSheet.create({
+  text: {
+    fontSize: 18,
+    lineHeight: 25,
+    color: '#4a4a4a'
+  },
+
   whiteText: {
     color: '#ffffff'
   }

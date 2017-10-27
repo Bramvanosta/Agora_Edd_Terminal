@@ -16,7 +16,7 @@ class CameraModule extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.cameraContainer}>
         <Camera
           ref={cam => { this.camera = cam }}
           style={styles.preview}
@@ -38,6 +38,10 @@ CameraModule.propTypes = {
 export default CameraModule;
 
 const styles = StyleSheet.create({
+  cameraContainer: {
+    flex: 1
+  },
+
   preview: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -45,6 +49,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%'
   },
+
   capture: {
     flex: 0,
     backgroundColor: '#fff',

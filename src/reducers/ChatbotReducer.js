@@ -87,7 +87,9 @@ const formatMessage = (message) => ({
   type: message.type,
   author: AUTHORS.BOT,
   bubbles: formatBubbles(message.bubbles),
-  options: message.options
+  options: message.options,
+  uri: message.uri,
+  searchTerm: message.name_search
 })
 
 const formatBubbles = (bubbles) => {

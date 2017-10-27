@@ -12,6 +12,7 @@ import { setResponse, sendMessage } from '../../actions/ChatbotActions';
 import Progress from './Progress';
 import OptionSelect from './OptionSelect';
 import CameraModule from './CameraModule';
+import Search from './Search';
 
 class messageInput extends Component {
   handleChange = (response, message) => {
@@ -44,6 +45,8 @@ class messageInput extends Component {
         return <OptionSelect options={currentMessage.options} onChange={(option, message) => this.handleChange(option, message)}></OptionSelect>
       case TYPES.PICTURE:
         return <CameraModule onChange={(picture) => this.handleChange(picture)}></CameraModule>
+      case TYPES.SEACRH:
+        return <Search currentMessage={currentMessage} onChange={(options) => this.handleChange(options, message)}></Search>
     }
   }
   
