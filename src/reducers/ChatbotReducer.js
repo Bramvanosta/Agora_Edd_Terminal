@@ -8,7 +8,8 @@ import {
   REQUEST_ANSWER,
   FETCHED_ANSWER,
   REQUEST_AUTOCOMPLETE,
-  FETCHED_AUTOCOMPLETE
+  FETCHED_AUTOCOMPLETE,
+  QUIT_SESSION
 } from '../actions/ChatbotActions';
 
 const initialState = {
@@ -93,6 +94,9 @@ export default function chatbotState(state = initialState, action) {
         autocompleteLoading: false,
         autocompleteResults: action.payload
       }
+
+    case QUIT_SESSION:
+      return initialState;
 
     default:
       return state;

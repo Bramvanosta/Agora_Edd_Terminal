@@ -9,6 +9,7 @@ export const FETCHED_ANSWER = 'FETCHED_ANSWER';
 export const SET_RESPONSE = 'SET_RESPONSE';
 export const REQUEST_AUTOCOMPLETE = 'REQUEST_AUTOCOMPLETE';
 export const FETCHED_AUTOCOMPLETE = 'FETCHED_AUTOCOMPLETE';
+export const QUIT_SESSION = 'QUIT_SESSION';
 
 export const startChat = () => (dispatch) => {
   dispatch({
@@ -81,3 +82,9 @@ export const fetchAutocomplete = (value, uri, searchTerm) => (dispatch) => {
     });
   });
 }
+
+export const quitSession = () => (
+  {
+    type: QUIT_SESSION
+  }
+);
