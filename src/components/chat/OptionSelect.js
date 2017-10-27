@@ -15,7 +15,7 @@ class OptionSelect extends Component {
       <View style={styles.optionsContainer}>
         { options.map((option) => (
           <TouchableOpacity key={option.option_id} onPress={() => this.handlePress(option.option_id, option.name)} style={styles.optionItem} >
-            <Text>{ option.name }</Text>
+            <Text style={styles.optionItemText}>{ option.name }</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -38,8 +38,11 @@ const styles = StyleSheet.create({
     
   },
   optionItem:{
-    color:"#006ce2",
     padding:20,
+    backgroundColor:"#ffffff"
+  },
+  optionItemText:{
+    color:"#006ce2",
     fontWeight: "500"
   }
 
