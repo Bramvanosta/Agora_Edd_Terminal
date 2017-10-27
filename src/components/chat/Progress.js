@@ -37,6 +37,7 @@ class Progress extends Component {
         </View> */}
         {/* <View style={styles.sliderContainer}> */}
           <Slider
+            style={styles.slider}
             value={value}
             onValueChange={value => this.handleChange(value)}
             step={step}
@@ -70,6 +71,10 @@ export default Progress;
 const styles = StyleSheet.create({
   progressContainer: {
     flex: 1
+  },
+
+  slider: {
+    height: 65
   },
 
   textContainer: {

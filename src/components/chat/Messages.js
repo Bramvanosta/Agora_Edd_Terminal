@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { View, FlatList, StyleSheet, KeyboardAvoidingView, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -16,7 +16,9 @@ class Messages extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.messages.length !== nextProps.messages.length) {
-      this.messagesList.scrollToEnd();
+      setTimeout(() => {
+        this.messagesList.scrollToEnd();
+      }, 300);
     }
   }
 
@@ -24,7 +26,7 @@ class Messages extends Component {
     const { messages } = this.props;
 
     return (
-      <KeyboardAvoidingView behavior="padding" style={styles.chatContainer}>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={150} style={styles.chatContainer}>
         <View style={styles.messagesContainer}>
           <FlatList
             ref={(ref) => this.messagesList = ref}
@@ -49,15 +51,15 @@ Messages.propTypes = {
 
 const styles = StyleSheet.create({
   chatContainer: {
-    flex: 1
+    flex: 1,
   },
 
   messagesContainer: {
-    height: '70%'
+    flex: 1,
   },
 
   inputContainer: {
-    height: '30%'
+    paddingTop: 20
   }
 });
 
