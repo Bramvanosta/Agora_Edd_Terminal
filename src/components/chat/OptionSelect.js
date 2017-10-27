@@ -34,12 +34,14 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flexDirection: 'row',
     flex:1,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    heigth:100
     
   },
   optionItem:{
     padding:20,
-    backgroundColor:"#ffffff"
+    backgroundColor:"#ffffff",
+    margin:20
   },
   optionItemText:{
     color:"#006ce2",
