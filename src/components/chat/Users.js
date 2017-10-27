@@ -38,7 +38,7 @@ class Users extends Component {
           <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
                 <Text style={styles.userNameCard} >{ user.username }</Text>
               { user.skills.map((skill, index) => (
-                  <Text>{ skill.name }</Text>  
+                  <Text style={styles.skillName} >{ skill.name }</Text>  
               ))}
           </TouchableOpacity>
         </View>
@@ -65,10 +65,13 @@ const styles = StyleSheet.create({
   userNameCard:{
     color:"#0067e0",
     fontSize:20,
+    flex:1
   },
   userCard:{
     // marginTop: -120,
     padding: 10,
+    flexDirection: 'column',
+    justifyContent: 'center',
     flex:1,
     // alignSelf: 'stretch',
     borderRadius:35,
@@ -82,6 +85,9 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 0.1
   },
+  skillName:{
+    flex:1
+  }
   
 
 });
