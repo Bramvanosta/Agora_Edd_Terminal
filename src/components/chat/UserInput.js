@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import * as TYPES from '../../config/messageTypes';
 
@@ -36,9 +37,9 @@ class messageInput extends Component {
     
     switch(currentMessage.type) {
       case TYPES.TEXT:
-        return <TextInput onChangeText={(text) => this.handleChange(text)} />
+        return <TextInput style={styles.textInput} onChangeText={(text) => this.handleChange(text)} />
       case TYPES.PROGRESS:
-        return <Progress onChange={(response, message) => this.handleChange(response, message)} />;
+        return <Progress step={20} onChange={(response, message) => this.handleChange(response, message)} />;
       case TYPES.SELECT:
         return <OptionSelect options={currentMessage.options} onChange={(option, message) => this.handleChange(option, message)}></OptionSelect>
       case TYPES.PICTURE:
@@ -51,14 +52,14 @@ class messageInput extends Component {
     const buttonIsVisible = currentMessage.type === TYPES.TEXT || currentMessage.type === TYPES.PROGRESS;
 
     return (
-      <View>
+      <View style={styles.inputContainer}>
         { this.renderInput() }
         { buttonIsVisible ?
-          <Button
-            onPress={this.handlePress}
-            title="Envoyer"
-            disabled={response.length === 0}
-          />
+          <TouchableOpacity
+            style={styles.validButton}
+            onPress={this.handlePress}>
+            <Icon style={styles.validButtonIcon} name="send" size={30} color={response.length > 0 || response > 0 ? '#1374e3' : '#b7b7b7'} />
+          </TouchableOpacity>
           : null}
       </View>
     )
@@ -91,4 +92,30 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(messageInput);
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+
+  textInput: {
+    flex: 1,
+    height: 65,
+    borderRadius: 35,
+    padding: 20,
+    backgroundColor: '#ffffff'
+  },
+
+  validButton: {
+    justifyContent: 'center',
+    height: 65,
+    marginLeft: 20,
+    backgroundColor: '#ffffff',
+    borderRadius: 35
+  },
+
+  validButtonIcon: {
+    marginLeft: 45,
+    marginRight: 45
+  }
 });

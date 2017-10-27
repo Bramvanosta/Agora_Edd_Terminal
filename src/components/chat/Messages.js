@@ -15,6 +15,13 @@ class Messages extends Component {
     this.props.startChat();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.messages.length !== nextProps.messages.length) {
+      console.log('scrollToEnd');
+      this.messagesList.scrollToEnd();
+    }
+  }
+
   render() {
     const { messages } = this.props;
 
@@ -22,6 +29,7 @@ class Messages extends Component {
       <KeyboardAvoidingView behavior="padding" style={styles.chatContainer}>
         <View style={styles.messagesContainer}>
           <FlatList
+            ref={(ref) => this.messagesList = ref}
             data={messages}
             renderItem={({item}) => <Message message={item}></Message>}
           />

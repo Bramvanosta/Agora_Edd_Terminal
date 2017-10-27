@@ -21,6 +21,8 @@ export default Chat;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingTop: 20
+    paddingTop: 40,
+    paddingLeft: 40,
+    paddingRight: 40
   }
 });

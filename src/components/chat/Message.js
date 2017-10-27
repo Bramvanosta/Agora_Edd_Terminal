@@ -17,13 +17,12 @@ class Message extends Component {
     return (
       <View style={styleMessage}>
         { message.bubbles.map((bubble, index) => {
-            const fistBubbleStyle = index === 0 ? styles.firstBubble : null;
-            const lastBubbleStyle = index === message.bubbles.length - 1 ? styles.lastBubble : null;
+            const lastBubbleStyle = index === message.bubbles.length - 1 ? message.author === AUTHORS.BOT ? styles.lastBubbleBot : styles.lastBubbleUser : null;
             const betweenBubblesStyle = index > 0 ? styles.betweenBubbles : null;
           
             return (
-              <View key={bubble.id} style={[styles.bubble, styleBubble, fistBubbleStyle, lastBubbleStyle, betweenBubblesStyle]}>
-                <Bubble bubble={bubble}></Bubble>
+              <View key={bubble.id} style={[styles.bubble, styleBubble, lastBubbleStyle, betweenBubblesStyle]}>
+                <Bubble bubble={bubble} white={message.author === AUTHORS.USER}></Bubble>
               </View>
             );
           }) 
@@ -49,33 +48,28 @@ const styles = StyleSheet.create({
   },
 
   bubble: {
+    marginTop: 10,
     marginRight: 10,
     marginLeft: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    maxWidth: '50%'
-  },
-  
-  firstBubble: {
-    marginTop: 8,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5
+    paddingHorizontal: 12,
+    paddingVertical: 20,
+    maxWidth: '50%',
+    borderRadius: 35
   },
 
-  lastBubble: {
-    borderBottomLeftRadius: 5,
+  lastBubbleBot: {
+    borderBottomLeftRadius: 5
+  },
+
+  lastBubbleUser: {
     borderBottomRightRadius: 5
-  },
-
-  betweenBubbles: {
-    marginTop: 4
   },
   
   bubbleBot: {
-    backgroundColor: '#90A4AE',
+    backgroundColor: '#ffffff',
   },
   
   bubbleUser: {
-    backgroundColor: '#00E676',
+    backgroundColor: '#1374e3'
   }
 });
