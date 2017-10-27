@@ -33,14 +33,16 @@ class Users extends Component {
     return (
       <View style={styles.usersContainer}>
         { users.map((user) => (
-         <View key={user.id} style={styles.userCard}>
+         
           <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
+            <View key={user.id} style={styles.userCard}>
                 <Text style={styles.userNameCard} >{ user.username }</Text>
               { user.skills.map((skill, index) => (
                   <Text>{ skill.name }</Text>  
               ))}
+          </View>
           </TouchableOpacity>
-        </View>
+        
         ))}
       </View>
     )
