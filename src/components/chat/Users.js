@@ -35,7 +35,6 @@ class Users extends Component {
         { users.map((user) => (
          <View key={user.id} style={styles.userCard}>
           <TouchableOpacity onPress={() => this.handlePress(user.option_id, user.username)}>
-            <ScrollView>
               <View>
                 <Text style={styles.userNameCard} >{ user.username }</Text>
               </View>
@@ -44,7 +43,6 @@ class Users extends Component {
                   <Text>{ skill.name }</Text>  
                 </View>
               ))}
-            </ScrollView>
           </TouchableOpacity>
         </View>
         ))}
