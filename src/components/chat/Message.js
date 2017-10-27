@@ -18,7 +18,7 @@ class Message extends Component {
     const styleBubble = message.author === AUTHORS.BOT ? styles.bubbleBot : styles.bubbleUser;
 
     return (
-      <View style={styleMessage}>
+      <View style={[styles.messageBox, styleMessage]}>
         { message.author === AUTHORS.BOT ?
           <Image style={styles.image} source={require('../../assets/img/avatar.png')}></Image>
           : null }
@@ -51,6 +51,10 @@ Message.propTypes = {
 export default Message;
 
 const styles = StyleSheet.create({
+  messageBox: {
+    paddingTop: 20
+  },
+
   messageBot: {
     flexDirection: 'row',
     alignSelf: 'flex-start'
