@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
     backgroundColor:"#ffffff",
     margin:20,
     borderRadius:35,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 5,
-    shadowOpacity: 0.6
+    // shadowColor: '#000000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1
+    // },
+    // shadowRadius: 5,
+    // shadowOpacity: 0.6
 
   },
   optionItemText:{
