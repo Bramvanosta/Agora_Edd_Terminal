@@ -58,9 +58,8 @@ export default Users;
 
 const styles = StyleSheet.create({
   usersContainer: {
-    flexDirection: 'row',
-    flex:1,
-    justifyContent: 'center',
+    // flexDirection: 'row',
+    // justifyContent: 'center',
   },
   userNameCard:{
     color:"#0067e0",
@@ -69,8 +68,7 @@ const styles = StyleSheet.create({
   userCard:{
     // marginTop: -120,
     padding: 10,
-    flex:1,
-    alignSelf: 'stretch',
+    // alignSelf: 'stretch',
     borderRadius:35,
     backgroundColor:"#cccccc",
     // margin: 10,
