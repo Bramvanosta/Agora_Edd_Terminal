@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
       height: 1
     },
     shadowRadius: 5,
-    shadowOpacity: 1.0
+    shadowOpacity: 0.6
 
   },
   optionItemText:{
