@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
     padding:20,
     backgroundColor:"#ffffff",
     margin:20,
-    borderRadius:20,
+    borderRadius:35,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
-      height: 3
+      height: 1
     },
     shadowRadius: 5,
     shadowOpacity: 1.0
