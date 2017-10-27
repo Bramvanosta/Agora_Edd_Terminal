@@ -12,15 +12,15 @@ class Users extends Component {
     this.props.onChange(id, name)
   }
 
-  usersSkills = (isMajor) => {
+  usersSkillsItem = (isMajor) => {
     var style = {
-    //  background:'#b6b6b6',
+     background:'#b6b6b6',
      color:'#ffffff',
      padding:20,
      borderRadius:35
     };
     if(isMajor){
-      // style.background = '#00d4aa';
+      style.background = '#00d4aa';
     }
     return style;
   }
@@ -33,12 +33,18 @@ class Users extends Component {
     return (
       <View style={styles.usersContainer}>
         { users.map((user) => (
-          <TouchableOpacity style={styles.userCard} key={user.id} onPress={() => this.handlePress(user.option_id, user.username)}>
-            <Text style={styles.userNameCard} >{ user.username } { user.id }</Text>
-            { user.skills.map((skill) => (
-              <Text style={this.usersSkills(skill.isSearched)}  key={skill.id}>{ skill.name } { skill.id }</Text>  
-            ))}
-          </TouchableOpacity>
+         <View style={styles.userCard}>
+          <TouchableOpacity key={user.id} onPress={() => this.handlePress(user.option_id, user.username)}>
+              <View>
+                <Text style={styles.userNameCard} >{ user.username } { user.id }</Text>
+              </View>
+              { user.skills.map((skill) => (
+              <View>
+                <Text key={skill.id}>{ skill.name } { skill.id }</Text>  
+              </View>
+              ))}
+            </TouchableOpacity>
+          </View>
         ))}
       </View>
     )
@@ -58,11 +64,15 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent: 'center',
   },
+  userNameCard:{
+    color:"#0067e0",
+    fontSize:20
+  },
   userCard:{
-    padding:20,
-    backgroundColor:"#ffffff",
-    margin:20,
+    padding:30,
     borderRadius:35,
+    backgroundColor:"#ffffff",
+    margin:10,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
@@ -70,10 +80,9 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.1
-  },
-  userNameCard:{
-    color:"#0c73e3",
-    fontWeight: "700"
-  },
+  }
+  
+
+
 
 });
