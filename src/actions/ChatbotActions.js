@@ -16,6 +16,8 @@ export const startChat = () => (dispatch) => {
     type: REQUEST_CHAT
   });
 
+  console.log(`${CONFIG.baseUrl}/api/chatBot`);
+
   setTimeout(() => {
     axios.post(`${CONFIG.baseUrl}/api/chatBot`)
       .then(response => response.data)
@@ -25,6 +27,9 @@ export const startChat = () => (dispatch) => {
           type: FETCHED_CHAT,
           payload: data
         });
+      })
+      .catch(error => {
+        console.log(error)
       });
   }, 2000);
 }

@@ -36,9 +36,9 @@ class Users extends Component {
          <View key={user.id} style={styles.userCard}>
           <TouchableOpacity style={styles.test} onPress={() => this.handlePress(user.option_id, user.username)}>
               <Text style={styles.userNameCard} >{ user.username }</Text>
-              { user.skills.map((skill, index) => (
-                <Text key={index}>{ skill.name }</Text>
-              ))}
+              { user.skills.map((skill, index) => {
+                return index > 1 ? <Text key={index}>{ skill.name }</Text> : null
+              })}
           </TouchableOpacity>
         </View>
         ))}
